@@ -28,19 +28,19 @@ export const cat102 = () =>
 export const multiple = () => {
   const cats = [
     {
-      imgSrc: "https://http.cat/100",
-      name: "100",
-      status: "continue",
+      imgSrc: "https://http.cat/204",
+      name: "204",
+      status: "no content",
     },
     {
-      imgSrc: "https://http.cat/101",
-      name: "101",
-      status: "switch protocols",
+      imgSrc: "https://http.cat/401",
+      name: "401",
+      status: "unauthorized",
     },
     {
-      imgSrc: "https://http.cat/102",
-      name: "102",
-      status: "processing",
+      imgSrc: "https://http.cat/409",
+      name: "409",
+      status: "conflict",
     },
   ];
   //ERROR IN STORYBOOK Expecting an HTML snippet or DOM node from the story: "Multiple" of "Components/Card".
@@ -62,7 +62,7 @@ export const CatFromAPI = (args, { loaded: { cat } }) => {
 };
 CatFromAPI.loaders = [
   async () => ({
-    cat: await getCharacter(300),
+    cat: await getCharacter(999),
   }),
 ];
 

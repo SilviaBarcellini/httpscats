@@ -31,6 +31,15 @@ export async function getCharacter(id) {
     `https://rickandmortyapi.com/api/character/${id}`
   );
 
+  if (!response.ok) {
+    const result = await response.json();
+    return {
+      imgSrc: "https://http.cat/404",
+      name: result.error,
+      status: "cat not found 😾",
+    };
+  }
+
   //https://http.cat/${id} error: failed to fetch(storybook)
   //SLACK SOLUTION TO ISSUE
   //`https://api.thecatapi.com/v1/images/search?mime_types=gif`,
@@ -55,6 +64,10 @@ export async function getCharacter(id) {
 //CREATE FUNCTION = GET MULTIPLE CHARACTERS + MAP RESULTS IN A MAP
 export async function getCharacters() {
   const response = await fetch(`https://rickandmortyapi.com/api/character/`);
+  //fallbackplan (same as single character)
+  if (!response.ok) {
+    return [];
+  }
   const result = (await response.json()) as APICATs;
   const characters = result.results.map((apiCat) => ({
     imgSrc: apiCat.image,
